@@ -16,13 +16,13 @@
     "default_icon": "images/cat.png"
   },
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["background.js", "manager.js"]
   },
   "content_scripts": [ {
     "matches": ["<all_urls>"],
     "exclude_globs": ["*/manager.html"],
     "css": ["fix.css"],
-    "js": ["manager.js", "script.js", "jquery-3.2.1.js"]
+    "js": ["script.js", "jquery-3.2.1.js"]
   }]
 
 }

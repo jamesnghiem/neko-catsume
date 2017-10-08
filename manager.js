@@ -10,14 +10,13 @@ img.maxHeight = 125;
 img.maxWidth = 125;
 var table = document.getElementById("catTable");
 
-
 function displayCatCollection() {
   chrome.storage.sync.get("cats", function(items) {
     var cats_displayed = [];
     var div = document.createElement("DIV");
     div.id = "catCollection";
-    var width = 0;
-    var height = 0;
+    var w = 0;
+    var h = 100;
     console.log(items["cats"]);
     for (var i = 0; i < items["cats"].length; i++) {
       var imgURL = items["cats"][i];
@@ -26,16 +25,16 @@ function displayCatCollection() {
         var img = document.createElement("IMG");
         img.height = 100;
         img.width = 100;
-        img.bottom = height;
-        img.left = width;
+        img.bottom = h;
+        img.left = w;
         img.src = imgURL;
         img.position = "fixed";
         div.appendChild(img);
-        if (width + 100 > window.innerWidth) {
-          width = 0;
-          height += 100;
+        if (w + 100 > window.innerWidth) {
+          w = 0;
+          h += 100;
         } else {
-          width += 100;
+          w += 100;
         }
       }
     }

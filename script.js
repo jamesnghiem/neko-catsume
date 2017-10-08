@@ -4,6 +4,9 @@ var img = document.createElement("IMG");
 var div = document.createElement("DIV");
 var imgURL;
 
+document.background.maxWidth = 100;
+document.background.maxHeight = 100;
+
 function catAppearance() {
   var chance = Math.floor(Math.random());
   var catNum = selectRandom(1, 28);
