@@ -61,8 +61,11 @@ function catClick() {
                 chrome.storage.sync.set({'cats': cats}, function () {
                     console.log("added to storage");
                 });
-                chrome.storage.sync.set({imgURL: 1}, function () {
-                    console.log(imgURL + ":" + 1);
+                var key = imgURL;
+                var file = {};
+                file[key] = 1;
+                chrome.storage.sync.set(file, function () {
+                    console.log(file);
                 });
             }
         }

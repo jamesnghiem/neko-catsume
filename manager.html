@@ -1,8 +1,8 @@
 <html>
 
 <head>
-<script src="manager.js"></script>
-<script src="jquery-3.2.1.js"></script>
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
+<script type="text/javascript" src="manager.js"></script>
 <style>
 img {
     max-width: 100%;
@@ -32,13 +32,17 @@ td {
     text-align:center;
 }
 
+table#catTable {
+    width: 100%;
+}
+
 </style>
 </head>
 
 <body>
   <h2>Cats Collected: </h2>
 
-  <table style="width:100%" id="catTable">
+  <table id="catTable">
   <tr>
     <th>Cat</th>
     <th>Seen</th>

@@ -8,17 +8,36 @@ var height = 0;
 var img = document.createElement("IMG");
 img.maxHeight = 125;
 img.maxWidth = 125;
-var table = document.getElementById("catTable");
 
+function addRow(currentCat, seen) {
+    $("#catTable").append("<tr><td><img src = " + currentCat + " height=125 width=125 /></td><td>" + seen + "</td><td>0</td></tr>");
+}
+
+function callback(currentCat) {
+    chrome.storage.sync.get(currentCat, function (timesSeen) {
+        addRow(currentCat, timesSeen[currentCat]);
+    });
+}
 
 function displayCatCollection() {
+
     chrome.storage.sync.get('cats', function (profileObj) {
         var profile = profileObj;
         console.log(profile);
         if (jQuery.isEmptyObject(profile)) {
           return;
         } else {
-          var catArray = profile['cats'];
+            var catArray = profile['cats'];
+            var i = 0;
+            var currentCat;
+            while (i < catArray.length) {
+                currentCat = catArray[i];
+                callback(currentCat);
+                i += 1;
+            }
+
+
+          /* var catArray = profile['cats'];
           for (var cat in catArray) {
               var row = table.insertRow();
               var cell1 = row.insertCell(0);
@@ -31,7 +50,7 @@ function displayCatCollection() {
                 return profileObj[cat];
               }));
               cell3.appendData("0");
-          }
+          } */
         }
     });
 
