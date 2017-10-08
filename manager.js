@@ -13,13 +13,14 @@ var table = document.getElementById("catTable");
 function displayCatCollection() {
   chrome.storage.sync.get("cats", function(items) {
     var cats_displayed = [];
-    //var div = document.createElement("DIV");
-    //div.id = "catCollection";
+    var div = document.createElement("DIV");
+    div.id = "catCollection";
     var w = 0;
     var h = 100;
     console.log(items["cats"]);
     for (var i = 0; i < items["cats"].length; i++) {
       var imgURL = items["cats"][i];
+      console.log(imgURL);
       if (cats_displayed.indexOf(imgURL) == -1) {
         var img = document.createElement("IMG");
         img.height = 100;
@@ -28,7 +29,7 @@ function displayCatCollection() {
         img.left = w;
         img.src = imgURL;
         img.position = "fixed";
-        //div.appendChild(img);
+        div.appendChild(img);
         if (w + 100 > window.innerWidth) {
           w = 0;
           h += 100;
@@ -36,9 +37,8 @@ function displayCatCollection() {
           w += 100;
         }
       }
-      document.body.appendChild(img);
     }
-    //document.body.appendChild(img);
+    document.body.appendChild(div);
   });
 }
 
